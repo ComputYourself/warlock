@@ -35,6 +35,8 @@ public class TCPSocket
         //socket.Blocking = false;
         socket.Connect(dns.AddressList[0], port);
         return true;
+
+        // gérer les connections ratées et renvoyer false le cas échéant
     }
 
     private bool Send(byte[] message)
