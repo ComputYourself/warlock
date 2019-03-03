@@ -34,6 +34,9 @@ public class TCPSocket
         IPHostEntry dns = Dns.GetHostEntry(address);
         //socket.Blocking = false;
         socket.Connect(dns.AddressList[0], port);
+
+        socket.Blocking = false;
+
         return true;
 
         // gérer les connections ratées et renvoyer false le cas échéant
