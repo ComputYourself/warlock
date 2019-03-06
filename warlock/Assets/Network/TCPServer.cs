@@ -10,18 +10,22 @@ public class TCPServer
     
     bool Listen(int port)
     {
-        //socket = new Socket(IPAddress.Any.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+        IPEndPoint localIPEndpoint = new IPEndPoint(0, port);
+        this.socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
+        this.socket.Bind(localIPEndpoint);
+        this.socket.Listen(255);
         return true;
     }
 
     TCPSocket Accept()
     {
-        return null;
+        TCPSocket client = new TCPSocket(this.socket.Accept());
+        return (client);
     }
 
     bool Close()
     {
-        socket.Close();
+        this.socket.Close();
         return true;
     }
 }

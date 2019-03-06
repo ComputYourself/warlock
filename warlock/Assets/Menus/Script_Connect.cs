@@ -37,14 +37,12 @@ public class Script_Connect : MonoBehaviour
 
         // Faire la gestion d'erreurs si connect renvoie false
 
-        Byte[] message = new Byte[4];
-
-        Debug.Log("bite");
-
-        socket.Socket.Receive(message);
+        Byte[] message = socket.Recv();
 
         System.Text.Encoding enc = System.Text.Encoding.ASCII;
 
         Debug.Log(enc.GetString(message));
+
+        socket.Send(enc.GetBytes("bite"));
     }
 }

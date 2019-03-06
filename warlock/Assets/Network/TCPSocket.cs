@@ -41,14 +41,18 @@ public class TCPSocket
         // gérer les connections ratées et renvoyer false le cas échéant
     }
 
-    private bool Send(byte[] message)
+    public bool Send(byte[] message)
     {
+        this.socket.Send(message);
+
         return true;
     }
 
-    private byte[] Recv()
+    public byte[] Recv()
     {
-        return null;
+        byte[] message = new byte[65536];
+        this.socket.Receive(message);
+        return message;
     }
 
     private bool Close()
