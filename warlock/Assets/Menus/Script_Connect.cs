@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 
 public class Script_Connect : MonoBehaviour
 {
@@ -34,5 +36,15 @@ public class Script_Connect : MonoBehaviour
         socket.Connect(address.text, int.Parse(port.text));
 
         // Faire la gestion d'erreurs si connect renvoie false
+
+        Byte[] message = new Byte[4];
+
+        Debug.Log("bite");
+
+        socket.Socket.Receive(message);
+
+        System.Text.Encoding enc = System.Text.Encoding.ASCII;
+
+        Debug.Log(enc.GetString(message));
     }
 }

@@ -32,10 +32,9 @@ public class TCPSocket
     {
         socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
         IPHostEntry dns = Dns.GetHostEntry(address);
-        //socket.Blocking = false;
         socket.Connect(dns.AddressList[0], port);
 
-        socket.Blocking = false;
+        //socket.Blocking = false;
 
         return true;
 
