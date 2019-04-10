@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SpellCast : MonoBehaviour
 {
     float cooldown;
+    float timeToCast;
     Image icon;
     GameObject cursorImage;
     GameObject spellToCast;
@@ -15,19 +16,30 @@ public class SpellCast : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        timeToCast = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (timeToCast > 0)
+        {
+            timeToCast -= Time.deltaTime;
+        }
     }
 
-    
-    GameObject Cast()
+
+    public GameObject Cast()
     {
-        GameObject obj = Instantiate(spellToCast);
-        return obj;
+        if (timeToCast <= 0)
+        {
+            GameObject obj = Instantiate(spellToCast);
+            timeToCast = cooldown;
+            return obj;
+        }
+        else
+        {
+            return null;
+        }
     }
 }

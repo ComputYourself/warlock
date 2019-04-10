@@ -16,7 +16,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            spells[0].Cast();
+        }
     }
 
 
