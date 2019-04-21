@@ -6,11 +6,13 @@ public class PlayerController : MonoBehaviour
 {
 
     SpellCast[] spells = new SpellCast[5];
+    public float maxLife;
+    private float life;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        life = maxLife;
     }
 
     // Update is called once per frame
@@ -22,5 +24,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    public void Damage(float damage)
+    {
+        life -= damage;
+        if (life <= 0)
+        {
+            Destroy(this);
+        }
+    }
 }

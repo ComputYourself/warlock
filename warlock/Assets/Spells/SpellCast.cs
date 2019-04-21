@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpellCast : MonoBehaviour
+public abstract class SpellCast : MonoBehaviour
 {
-    float cooldown;
-    float timeToCast;
-    Image icon;
-    GameObject cursorImage;
-    GameObject spellToCast;
+    [SerializeField]
+    private readonly float cooldown;
+    private float timeToCast;
+    public readonly Image icon;
+    public readonly GameObject cursorImage;
+    protected GameObject spellToCast;
 
 
 
@@ -28,12 +29,13 @@ public class SpellCast : MonoBehaviour
         }
     }
 
+    public abstract void Cursor();
 
     public GameObject Cast()
     {
         if (timeToCast <= 0)
         {
-            GameObject obj = Instantiate(spellToCast);
+            GameObject obj = Throw();
             timeToCast = cooldown;
             return obj;
         }
@@ -42,4 +44,8 @@ public class SpellCast : MonoBehaviour
             return null;
         }
     }
+
+
+    // Instantiate(spellToCast);
+    protected abstract GameObject Throw();
 }
