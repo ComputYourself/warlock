@@ -6,7 +6,7 @@ public abstract class NetworkEvent
 {
     // Constructors
 
-    // Creators
+    // ****************** Creators *******************
     public static T Create<T>(byte[] data)
         where T : NetworkEvent, new()
     {
@@ -23,6 +23,8 @@ public abstract class NetworkEvent
         T ne = new T();
         return ne;
     }
+    // ***********************************************
+
 
     public virtual byte[] Serialize()
     {
@@ -38,7 +40,7 @@ public abstract class NetworkEvent
 //Exemple
 public class NetworkEvent_ExempleVide : NetworkEvent
 {
-    
+
 }
 
 

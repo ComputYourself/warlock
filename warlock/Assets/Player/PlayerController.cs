@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+
+    public Image[] spellImages;
 
     SpellCast[] spells = new SpellCast[5];
     public float maxLife;
