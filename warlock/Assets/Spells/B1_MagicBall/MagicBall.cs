@@ -9,10 +9,14 @@ public class MagicBall : Spell
     [SerializeField]
     readonly private ParticleSystem explosion;
 
-    private float speed, damage, areaOfEffect;
-
     // TODO définir les layers
     private LayerMask mask;
+
+    private float speed, damage, areaOfEffect;
+
+    public float Speed { set => speed = value; }
+    public float Damage { set => damage = value; }
+    public float AreaOfEffect { set => areaOfEffect = value; }
 
 
     // Update is called once per frame
@@ -27,10 +31,10 @@ public class MagicBall : Spell
         RaycastHit[] hits = Physics.SphereCastAll(collision.contacts[0].point, areaOfEffect, Vector3.up, 0.0f, mask);
         foreach(RaycastHit hit in hits)
         {
-            PlayerController controller;
-            if ((controller = hit.transform.GetComponent<PlayerController>()) != null)
+            PlayerStats stats;
+            if ((stats = hit.transform.GetComponent<PlayerStats>()) != null)
             {
-                controller.Damage(this.damage);
+                stats.Damage(this.damage);
             }
         }
 

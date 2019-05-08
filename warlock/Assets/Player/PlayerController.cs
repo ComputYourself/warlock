@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,31 +9,35 @@ public class PlayerController : MonoBehaviour
 
     public Image[] spellImages;
 
-    SpellCast[] spells = new SpellCast[5];
-    public float maxLife;
-    private float life;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        life = maxLife;
-    }
+    List<SpellCast> spells = new List<SpellCast>(5);
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            spells[0].Cast();
+            spells[0]?.Cast();
         }
     }
 
-    public void Damage(float damage)
+    /// <summary>
+    /// Add a spell to the first valid place
+    /// </summary>
+    /// <param name="cast">Cast to add</param>
+    /// <returns>True if a cast is add, false otherwise</returns>
+    public bool AddSpell(Type type)
     {
-        life -= damage;
-        if (life <= 0)
+        if (spells.Count < spells.Capacity)
         {
-            Destroy(this);
+            SpellCast cast = (SpellCast)this.gameObject.AddComponent(type);
+            spells.Add(cast);
+
+            spellImages[spells.Count - 1].sprite = cast.icon;
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

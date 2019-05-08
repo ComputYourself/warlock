@@ -8,8 +8,10 @@ public abstract class SpellCast : MonoBehaviour
     [SerializeField]
     private readonly float cooldown;
     private float timeToCast;
-    public readonly Image icon;
-    public readonly GameObject cursorImage;
+    public readonly Sprite icon;
+    public readonly GameObject cursorGameObject;
+
+    [SerializeField]
     protected GameObject spellToCast;
 
 
