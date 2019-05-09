@@ -25,11 +25,16 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     /// <param name="cast">Cast to add</param>
     /// <returns>True if a cast is add, false otherwise</returns>
-    public bool AddSpell(Type type)
+    public bool AddSpell(GameObject prefab)
     {
+        //SpellCast obj = (SpellCast)Instantiate(prefab);
+        var prefabCast = prefab.GetComponent<SpellCast>();
+        SpellCast cast = (SpellCast)this.gameObject.AddComponent(prefab.GetComponent<SpellCast>().GetType());
+
         if (spells.Count < spells.Capacity)
         {
-            SpellCast cast = (SpellCast)this.gameObject.AddComponent(type);
+            gameObject.AddComponent(cast.GetType());
+            cast.spellToCast = prefabCast.spellToCast;
             spells.Add(cast);
 
             spellImages[spells.Count - 1].sprite = cast.icon;

@@ -12,7 +12,7 @@ public abstract class SpellCast : MonoBehaviour
     public readonly GameObject cursorGameObject;
 
     [SerializeField]
-    protected GameObject spellToCast;
+    public GameObject spellToCast;
 
 
 
