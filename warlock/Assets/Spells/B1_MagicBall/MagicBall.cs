@@ -12,6 +12,7 @@ public class MagicBall : Spell
     // TODO définir les layers
     private LayerMask mask;
 
+    [SerializeField]
     private float speed, damage, areaOfEffect;
 
     public float Speed { set => speed = value; }
@@ -22,11 +23,13 @@ public class MagicBall : Spell
     // Update is called once per frame
     void Update()
     {
-        this.transform.Translate(this.transform.forward);
+        this.transform.Translate(this.transform.forward * speed, Space.World);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.other.gameObject.name);
+
         // Damage every player in the area of effect
         RaycastHit[] hits = Physics.SphereCastAll(collision.contacts[0].point, areaOfEffect, Vector3.up, 0.0f, mask);
         foreach(RaycastHit hit in hits)
@@ -39,7 +42,7 @@ public class MagicBall : Spell
         }
 
         // Throw in shiny particles and then destroy the gameobject
-        explosion.Play();
+        //explosion.Play();
         Destroy(this.gameObject);
     }
 
