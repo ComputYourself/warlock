@@ -45,10 +45,12 @@ public abstract class SpellCast : MonoBehaviour
         }
     }
     
+
     public GameObject Cast()
     {
 
         // TODO ne pas afficher le curseur si pas le cooldown
+        // TODO gérer smartcast sans affichage de portée
         if (timeToCast <= 0)
         {
             GameObject obj = Throw();
@@ -62,10 +64,16 @@ public abstract class SpellCast : MonoBehaviour
     }
 
 
-    // Abstracts
+    /******************************************* Abstracts **************************************/
 
-    // Instantiate(spellToCast);
+    /// <summary>
+    /// Actually throw the spell instantiating nesserary gameobjects
+    /// </summary>
+    /// <returns>The GameObject that instantiate the actual spell result</returns>
     protected abstract GameObject Throw();
 
+    /// <summary>
+    /// Show useful spell indicator on the cursor of the player
+    /// </summary>
     public abstract void Cursor();
 }

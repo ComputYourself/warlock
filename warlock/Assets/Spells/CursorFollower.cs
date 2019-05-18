@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// CursorFollower is used to make an empty GameObject with a Projector object that helps displaying spell indicators follow the cursor
+/// </summary>
+
 public class CursorFollower : MonoBehaviour
 {
     RaycastHit hit;
