@@ -8,8 +8,10 @@ public abstract class SpellCast : MonoBehaviour
     [SerializeField]
     private readonly float cooldown;
     private float timeToCast;
-    public readonly Sprite icon;
-    public readonly GameObject cursorGameObject;
+    public Sprite icon;
+    public Material cursorMaterial;
+    protected bool isCursorActive;
+    public GameObject cursor;
 
     [SerializeField]
     public GameObject spellToCast;
@@ -17,24 +19,36 @@ public abstract class SpellCast : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         timeToCast = 0;
+        cursor = GameObject.Find("CursorFollower");
+    }
+
+    protected void OnEnable()
+    {
+        timeToCast = 0;
+        cursor = GameObject.Find("CursorFollower");
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         if (timeToCast > 0)
         {
             timeToCast -= Time.deltaTime;
         }
+
+        if(isCursorActive && Input.GetMouseButtonDown(0))
+        {
+            Cast();
+        }
     }
-
-    public abstract void Cursor();
-
+    
     public GameObject Cast()
     {
+
+        // TODO ne pas afficher le curseur si pas le cooldown
         if (timeToCast <= 0)
         {
             GameObject obj = Throw();
@@ -48,6 +62,10 @@ public abstract class SpellCast : MonoBehaviour
     }
 
 
+    // Abstracts
+
     // Instantiate(spellToCast);
     protected abstract GameObject Throw();
+
+    public abstract void Cursor();
 }

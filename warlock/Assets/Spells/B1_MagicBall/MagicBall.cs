@@ -28,8 +28,6 @@ public class MagicBall : Spell
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.other.gameObject.name);
-
         // Damage every player in the area of effect
         RaycastHit[] hits = Physics.SphereCastAll(collision.contacts[0].point, areaOfEffect, Vector3.up, 0.0f, mask);
         foreach(RaycastHit hit in hits)

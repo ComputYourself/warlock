@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     {
         if (spells.Count > 0 && Input.GetKeyDown(KeyCode.A))
         {
-            spells[0].Cast();
+            spells[0].Cursor();
         }
     }
 
@@ -24,10 +24,12 @@ public class PlayerController : MonoBehaviour
     /// Add a spell to the first valid place
     /// </summary>
     /// <param name="cast">Cast to add</param>
-    /// <returns>True if a cast is add, false otherwise</returns>
+    /// <returns>True if a cast is added, false otherwise</returns>
     public bool AddSpell(GameObject prefab)
     {
         //SpellCast obj = (SpellCast)Instantiate(prefab);
+
+        // TODO utiliser des scriptable objects ? Les sorts sous forme de prefabs ici ne sont qu'un tas de données
         var prefabCast = prefab.GetComponent<SpellCast>();
         SpellCast cast = (SpellCast)this.gameObject.AddComponent(prefab.GetComponent<SpellCast>().GetType());
 
@@ -35,6 +37,8 @@ public class PlayerController : MonoBehaviour
         {
             gameObject.AddComponent(cast.GetType());
             cast.spellToCast = prefabCast.spellToCast;
+            cast.cursorMaterial = prefabCast.cursorMaterial;
+            cast.icon = prefabCast.icon;
             spells.Add(cast);
 
             spellImages[spells.Count - 1].sprite = cast.icon;
