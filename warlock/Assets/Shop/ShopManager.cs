@@ -27,6 +27,12 @@ public class ShopManager : MonoBehaviour
     
     public void BuyMagicBall()
     {
+        Debug.Log("proc");
         player.AddSpell(MagicBall_Cast);
+    }
+
+    public void BuyMeteor()
+    {
+        player.AddSpell(Meteor_Cast);
     }
 }

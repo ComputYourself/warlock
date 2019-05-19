@@ -18,6 +18,22 @@ public class PlayerController : MonoBehaviour
         {
             spells[0].Cursor();
         }
+        if (spells.Count > 1 && Input.GetKeyDown(KeyCode.Z))
+        {
+            spells[1].Cursor();
+        }
+        if (spells.Count > 2 && Input.GetKeyDown(KeyCode.E))
+        {
+            spells[2].Cursor();
+        }
+        if (spells.Count > 3 && Input.GetKeyDown(KeyCode.R))
+        {
+            spells[3].Cursor();
+        }
+        if (spells.Count > 4 && Input.GetKeyDown(KeyCode.T))
+        {
+            spells[4].Cursor();
+        }
     }
 
     /// <summary>
@@ -27,15 +43,12 @@ public class PlayerController : MonoBehaviour
     /// <returns>True if a cast is added, false otherwise</returns>
     public bool AddSpell(GameObject prefab)
     {
-        //SpellCast obj = (SpellCast)Instantiate(prefab);
-
         // TODO utiliser des scriptable objects ? Les sorts sous forme de prefabs ici ne sont qu'un tas de données
-        var prefabCast = prefab.GetComponent<SpellCast>();
-        SpellCast cast = (SpellCast)this.gameObject.AddComponent(prefab.GetComponent<SpellCast>().GetType());
 
         if (spells.Count < spells.Capacity)
         {
-            gameObject.AddComponent(cast.GetType());
+            var prefabCast = prefab.GetComponent<SpellCast>();
+            SpellCast cast = (SpellCast)this.gameObject.AddComponent(prefab.GetComponent<SpellCast>().GetType());
             cast.spellToCast = prefabCast.spellToCast;
             cast.cursorMaterial = prefabCast.cursorMaterial;
             cast.icon = prefabCast.icon;
@@ -46,6 +59,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            Debug.Log("You can't buy anymore spells");
             return false;
         }
     }

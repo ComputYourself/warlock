@@ -2,23 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagicBall_Cast : SpellCast
+public class Meteor_Cast : SpellCast
 {
     override protected GameObject Throw()
     {
-
-
-        Projector proj = cursor.GetComponent<Projector>();
-        proj.enabled = false;
-        isCursorActive = false;
-
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
         if (Physics.Raycast(ray, out hit))
         {
-            this.transform.LookAt(new Vector3(hit.point.x, this.transform.position.y, hit.point.z));
+            Projector proj = cursor.GetComponent<Projector>();
+            proj.enabled = false;
+            isCursorActive = false;
+            return Instantiate(spellToCast, hit.point, this.transform.rotation);
         }
-        return Instantiate(spellToCast, this.transform.position + this.transform.forward * 1.5f, this.transform.rotation);
+
+        return null;
     }
 
 
@@ -32,5 +31,4 @@ public class MagicBall_Cast : SpellCast
             proj.material = this.cursorMaterial;
         }
     }
-
 }
