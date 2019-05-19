@@ -14,7 +14,7 @@ public class Meteor_Cast : SpellCast
             Projector proj = cursor.GetComponent<Projector>();
             proj.enabled = false;
             isCursorActive = false;
-            return Instantiate(spellToCast, hit.point, this.transform.rotation);
+            return Instantiate(spellToCast, new Vector3(hit.point.x, 10, hit.point.z), this.transform.rotation);
         }
 
         return null;
