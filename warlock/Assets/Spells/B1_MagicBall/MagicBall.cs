@@ -12,12 +12,14 @@ public class MagicBall : Spell
     // TODO définir les layers
     private LayerMask mask;
 
-    [SerializeField]
-    private float speed, damage, areaOfEffect;
+    public float speed, damage, areaOfEffect;
 
     public float Speed { set => speed = value; }
     public float Damage { set => damage = value; }
     public float AreaOfEffect { set => areaOfEffect = value; }
+    public float Range { set => areaOfEffect = value; }
+
+    // TODO gérer la range
 
 
     // Update is called once per frame

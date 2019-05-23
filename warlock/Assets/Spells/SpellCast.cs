@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public abstract class SpellCast : MonoBehaviour
 {
     [SerializeField]
-    private readonly float cooldown;
+    private readonly float cooldown = 1.0f;
     private float timeToCast;
     public Sprite icon;
     public Material cursorMaterial;

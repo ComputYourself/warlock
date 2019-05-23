@@ -8,10 +8,9 @@ public class ShopManager : MonoBehaviour
     private PlayerController player;
 
     [Header("Spells prefabs")]
-    [SerializeField]
-    GameObject MagicBall_Cast;
-    [SerializeField]
-    GameObject Meteor_Cast;
+    [SerializeField] GameObject MagicBall_Cast;
+    [SerializeField] GameObject Meteor_Cast;
+    [SerializeField] GameObject Teleport_Cast;
 
     // Start is called before the first frame update
     void Start()
@@ -27,12 +26,16 @@ public class ShopManager : MonoBehaviour
     
     public void BuyMagicBall()
     {
-        Debug.Log("proc");
         player.AddSpell(MagicBall_Cast);
     }
 
     public void BuyMeteor()
     {
         player.AddSpell(Meteor_Cast);
+    }
+
+    public void BuyTeleport()
+    {
+        player.AddSpell(Teleport_Cast);
     }
 }
