@@ -5,16 +5,14 @@ using UnityEngine.UI;
 
 public abstract class SpellCast : MonoBehaviour
 {
-    [SerializeField]
-    private readonly float cooldown = 1.0f;
+    [SerializeField] private float cooldown = 1.0f;
     private float timeToCast;
     public Sprite icon;
     public Material cursorMaterial;
     protected bool isCursorActive;
     public GameObject cursor;
 
-    [SerializeField]
-    public GameObject spellToCast;
+    [SerializeField] public GameObject spellToCast;
 
 
 

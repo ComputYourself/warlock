@@ -9,14 +9,16 @@ using UnityEngine;
 public class CursorFollower : MonoBehaviour
 {
     RaycastHit hit;
+    [SerializeField] private LayerMask mask;
 
     // Update is called once per frame
     void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
         {
+            Debug.Log(hit.collider.gameObject);
             this.transform.position = new Vector3(hit.point.x, 10, hit.point.z);
         }
     }
