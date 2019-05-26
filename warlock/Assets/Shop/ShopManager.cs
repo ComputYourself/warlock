@@ -11,6 +11,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] GameObject MagicBall_Cast;
     [SerializeField] GameObject Meteor_Cast;
     [SerializeField] GameObject Teleport_Cast;
+    [SerializeField] GameObject Stealth_Cast;
 
     // Start is called before the first frame update
     void Start()
@@ -37,5 +38,10 @@ public class ShopManager : MonoBehaviour
     public void BuyTeleport()
     {
         player.AddSpell(Teleport_Cast);
+    }
+
+    public void BuyStealth()
+    {
+        player.AddSpell(Stealth_Cast);
     }
 }

@@ -18,7 +18,6 @@ public class CursorFollower : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
         {
-            Debug.Log(hit.collider.gameObject);
             this.transform.position = new Vector3(hit.point.x, 10, hit.point.z);
         }
     }

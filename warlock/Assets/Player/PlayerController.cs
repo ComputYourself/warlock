@@ -54,6 +54,12 @@ public class PlayerController : MonoBehaviour
             cast.icon = prefabCast.icon;
             spells.Add(cast);
 
+            if(prefabCast.GetType() == typeof(Stealth_Cast))
+            {
+                Stealth_Cast stealthcast = (Stealth_Cast)cast;
+                stealthcast.duration = prefab.GetComponent<Stealth_Cast>().duration;
+            }
+
             spellImages[spells.Count - 1].sprite = cast.icon;
             return true;
         }

@@ -37,6 +37,8 @@ public abstract class SpellCast : MonoBehaviour
             timeToCast -= Time.deltaTime;
         }
 
+
+        // TODO : gérer smartcast
         if(isCursorActive && Input.GetMouseButtonDown(0))
         {
             Cast();
