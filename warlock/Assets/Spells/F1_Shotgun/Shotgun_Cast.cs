@@ -1,15 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class MagicBall_Cast : SpellCast
+public class Shotgun_Cast : SpellCast
 {
     override protected GameObject Throw()
     {
         Projector proj = cursor.GetComponent<Projector>();
         proj.enabled = false;
         isCursorActive = false;
-
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
@@ -30,5 +27,4 @@ public class MagicBall_Cast : SpellCast
         }
         proj.material = this.cursorMaterial;
     }
-
 }
