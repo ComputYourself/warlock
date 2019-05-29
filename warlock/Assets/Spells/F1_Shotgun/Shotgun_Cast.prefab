@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 1
-  icon: {fileID: 21300000, guid: 08d90de80e7a0884fb2b122ed66f45b6, type: 3}
+  icon: {fileID: 21300000, guid: 8ec4151e3ed0b6947b6b0a1f7b9d07b7, type: 3}
   cursorMaterial: {fileID: 2100000, guid: fce161b1f452fc4458d0cd9805764c07, type: 2}
   isCursorActive: 0
   cursor: {fileID: 0}
