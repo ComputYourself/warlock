@@ -9,7 +9,7 @@ public abstract class SpellCast : MonoBehaviour
     private float timeToCast;
     public Sprite icon;
     public Material cursorMaterial;
-    protected bool isCursorActive;
+    public bool isCursorActive;
     public GameObject cursor;
 
     [SerializeField] public GameObject spellToCast;
@@ -50,6 +50,7 @@ public abstract class SpellCast : MonoBehaviour
     {
 
         // TODO ne pas afficher le curseur si pas le cooldown
+        // TODO gérer si le spell se lance pas
         // TODO gérer smartcast sans affichage de portée
         if (timeToCast <= 0)
         {

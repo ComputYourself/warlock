@@ -520,7 +520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mask:
     serializedVersion: 2
-    m_Bits: 311
+    m_Bits: 1335
 --- !u!1 &391754319
 GameObject:
   m_ObjectHideFlags: 0
@@ -2713,7 +2713,7 @@ GameObject:
   - component: {fileID: 2014643044}
   - component: {fileID: 2014643043}
   - component: {fileID: 2014643042}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2830,6 +2830,8 @@ MonoBehaviour:
   - {fileID: 1217017328}
   - {fileID: 1759876142}
   - {fileID: 333032589}
+  speed: 0.1
+  canMove: 1
 --- !u!136 &2064212303
 CapsuleCollider:
   m_ObjectHideFlags: 0

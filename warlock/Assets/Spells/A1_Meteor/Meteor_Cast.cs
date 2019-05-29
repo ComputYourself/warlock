@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Meteor_Cast : SpellCast
 {
@@ -9,26 +7,25 @@ public class Meteor_Cast : SpellCast
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Floor")))
         {
             Projector proj = cursor.GetComponent<Projector>();
             proj.enabled = false;
             isCursorActive = false;
             return Instantiate(spellToCast, new Vector3(hit.point.x, 10, hit.point.z), this.transform.rotation);
         }
-
         return null;
     }
 
 
     public override void Cursor()
     {
+        Projector proj = cursor.GetComponent<Projector>();
         if (!isCursorActive)
         {
-            Projector proj = cursor.GetComponent<Projector>();
             proj.enabled = true;
             isCursorActive = true;
-            proj.material = this.cursorMaterial;
         }
+        proj.material = this.cursorMaterial;
     }
 }

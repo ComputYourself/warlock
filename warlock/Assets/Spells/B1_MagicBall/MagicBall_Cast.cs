@@ -24,13 +24,13 @@ public class MagicBall_Cast : SpellCast
 
     public override void Cursor()
     {
+        Projector proj = cursor.GetComponent<Projector>();
         if (!isCursorActive)
         {
-            Projector proj = cursor.GetComponent<Projector>();
             proj.enabled = true;
             isCursorActive = true;
-            proj.material = this.cursorMaterial;
         }
+        proj.material = this.cursorMaterial;
     }
 
 }

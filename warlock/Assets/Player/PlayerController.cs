@@ -6,33 +6,75 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-
     public Image[] spellImages;
 
     List<SpellCast> spells = new List<SpellCast>(5);
+
+    private Vector2 direction = new Vector2 (0, 0);
+    public float speed;
+    public bool canMove = true;
+    private bool isMoving = false;
+
+    public const float MOUVEMENT_OFFSET = 0.1f;
 
     // Update is called once per frame
     void Update()
     {
         if (spells.Count > 0 && Input.GetKeyDown(KeyCode.A))
         {
+            UncastAllSpells();
             spells[0].Cursor();
         }
         if (spells.Count > 1 && Input.GetKeyDown(KeyCode.Z))
         {
+            UncastAllSpells();
             spells[1].Cursor();
         }
         if (spells.Count > 2 && Input.GetKeyDown(KeyCode.E))
         {
+            UncastAllSpells();
             spells[2].Cursor();
         }
         if (spells.Count > 3 && Input.GetKeyDown(KeyCode.R))
         {
+            UncastAllSpells();
             spells[3].Cursor();
         }
         if (spells.Count > 4 && Input.GetKeyDown(KeyCode.T))
         {
+            UncastAllSpells();
             spells[4].Cursor();
+        }
+
+        if(Input.GetMouseButtonDown(1))
+        {
+            Move();
+        }
+    }
+
+    private void UncastAllSpells()
+    {
+        foreach(SpellCast cast in spells)
+        {
+            cast.isCursorActive = false;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if(canMove && isMoving)
+        {
+            Vector2 pos = new Vector2(transform.position.x, transform.position.z);
+            if (Vector2.Distance(pos, direction) > MOUVEMENT_OFFSET)
+            {
+                Vector3 finishPoint = new Vector3((direction - pos).x, 0, (direction - pos).y);
+                transform.Translate(finishPoint.normalized * speed, Space.World);
+                this.transform.LookAt(new Vector3(direction.x, transform.position.y, direction.y));
+            }
+            else
+            {
+                isMoving = false;
+            }
         }
     }
 
@@ -67,6 +109,17 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("You can't buy anymore spells");
             return false;
+        }
+    }
+
+    private void Move()
+    {
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit))
+        {
+            this.direction = new Vector2(hit.point.x, hit.point.z);
+            isMoving = true;
         }
     }
 }

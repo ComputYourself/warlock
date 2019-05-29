@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Meteor : MonoBehaviour
 {
@@ -23,21 +21,25 @@ public class Meteor : MonoBehaviour
         this.transform.Translate(Vector3.down * speed, Space.World);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        // Damage every player in the area of effect
-        RaycastHit[] hits = Physics.SphereCastAll(collision.contacts[0].point, areaOfEffect, Vector3.up, 0.0f, mask);
-        foreach (RaycastHit hit in hits)
-        {
-            PlayerStats stats;
-            if ((stats = hit.transform.GetComponent<PlayerStats>()) != null)
-            {
-                stats.Damage(this.damage);
-            }
-        }
 
-        // Throw in shiny particles and then destroy the gameobject
-        //explosion.Play();
-        Destroy(this.gameObject);
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Floor"))
+        {
+            // Damage every player in the area of effect
+            RaycastHit[] hits = Physics.SphereCastAll(transform.position, areaOfEffect, Vector3.up, 0.0f, mask);
+            foreach (RaycastHit hit in hits)
+            {
+                PlayerStats stats;
+                if ((stats = hit.transform.GetComponent<PlayerStats>()) != null)
+                {
+                    stats.Damage(this.damage);
+                }
+            }
+
+            // Throw in shiny particles and then destroy the gameobject
+            //explosion.Play();
+            Destroy(this.gameObject);
+        }
     }
 }
