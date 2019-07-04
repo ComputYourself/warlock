@@ -1,24 +1,46 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
-/// CursorFollower is used to make an empty GameObject with a Projector object that helps displaying spell indicators follow the cursor
+/// CursorFollower is used to make an empty GameObject with a Projector object that helps displaying spell indicators follow the cursor when active
 /// </summary>
 
 public class CursorFollower : MonoBehaviour
 {
     RaycastHit hit;
     [SerializeField] private LayerMask mask;
+    public CursorMode mode;
+
+    private void Start()
+    {
+        mode = CursorMode.pointTo;
+    }
 
     // Update is called once per frame
     void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
+        switch (mode)
         {
-            this.transform.position = new Vector3(hit.point.x, 10, hit.point.z);
+            case CursorMode.followMouse:
+
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
+                {
+                    this.transform.position = new Vector3(hit.point.x, 10, hit.point.z);
+                }
+                break;
+            case CursorMode.pointTo:
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
+                {
+                    this.transform.position = new Vector3(hit.point.x, 10, hit.point.z);
+                }
+                break;
         }
+
     }
 }
+
+public enum CursorMode
+{
+    followMouse, pointTo
+}
+

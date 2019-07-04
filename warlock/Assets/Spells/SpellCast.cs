@@ -75,6 +75,7 @@ public abstract class SpellCast : MonoBehaviour
 
     /// <summary>
     /// Show useful spell indicator on the cursor of the player
+    /// Should be personnalised for each spell
     /// </summary>
     public abstract void Cursor();
 }
