@@ -7,6 +7,7 @@ public class Shotgun_Cast : SpellCast
         Projector proj = cursor.GetComponent<Projector>();
         proj.enabled = false;
         isCursorActive = false;
+        cursor.GetComponent<CursorFollower>().mode = CursorMode.followMouse;
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
@@ -26,5 +27,6 @@ public class Shotgun_Cast : SpellCast
             isCursorActive = true;
         }
         proj.material = this.cursorMaterial;
+        cursor.GetComponent<CursorFollower>().mode = CursorMode.pointTo;
     }
 }

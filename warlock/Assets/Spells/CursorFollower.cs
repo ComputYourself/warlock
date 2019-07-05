@@ -4,15 +4,19 @@
 /// CursorFollower is used to make an empty GameObject with a Projector object that helps displaying spell indicators follow the cursor when active
 /// </summary>
 
+// TODO changer en cursorManager pour gérer les différents types de curseurs
+
 public class CursorFollower : MonoBehaviour
 {
     RaycastHit hit;
     [SerializeField] private LayerMask mask;
+    [SerializeField] private Transform player;
     public CursorMode mode;
 
     private void Start()
     {
         mode = CursorMode.pointTo;
+
     }
 
     // Update is called once per frame
@@ -31,11 +35,23 @@ public class CursorFollower : MonoBehaviour
             case CursorMode.pointTo:
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
                 {
-                    this.transform.position = new Vector3(hit.point.x, 10, hit.point.z);
+                    this.transform.position = player.position;
+
+                    this.transform.LookAt((new Vector3(hit.point.x, -1.5f, hit.point.z).normalized + player.position));
                 }
                 break;
         }
 
+    }
+    
+    /// <summary>
+    /// Callback to draw gizmos that are pickable and always drawn.
+    /// </summary>
+    void OnDrawGizmos()
+    {
+        
+                    Gizmos.color = Color.red;
+                    Gizmos.DrawSphere((new Vector3(hit.point.x, -1.5f, hit.point.z).normalized + player.position), 1);
     }
 }
 
@@ -43,4 +59,5 @@ public enum CursorMode
 {
     followMouse, pointTo
 }
+
 
