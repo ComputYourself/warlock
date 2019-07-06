@@ -38,6 +38,7 @@ public abstract class SpellCast : MonoBehaviour
         }
 
         // TODO : gérer smartcasts
+        // TODO gérer smartcast sans affichage de portée
         if(isCursorActive && Input.GetMouseButtonDown(0))
         {
             GameObject obj = Throw();
@@ -57,9 +58,7 @@ public abstract class SpellCast : MonoBehaviour
 
     public void Cast()
     {
-        // TODO ne pas afficher le curseur si pas le cooldown
         // TODO gérer si le spell se lance pas
-        // TODO gérer smartcast sans affichage de portée
         if (timeToCast <= 0)
         {
             Cursor();

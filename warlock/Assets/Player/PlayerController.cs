@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetMouseButtonDown(1))
         {
+            UncastAllSpells();
             Move();
         }
     }
@@ -62,6 +63,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // This part is responsible of player movement
         if(canMove && isMoving)
         {
             Vector2 pos = new Vector2(transform.position.x, transform.position.z);
@@ -69,6 +71,8 @@ public class PlayerController : MonoBehaviour
             {
                 Vector3 finishPoint = new Vector3((direction - pos).x, 0, (direction - pos).y);
                 transform.Translate(finishPoint.normalized * speed, Space.World);
+
+                // TODO : try to make this less snappy for animation purposes
                 this.transform.LookAt(new Vector3(direction.x, transform.position.y, direction.y));
             }
             else
@@ -112,6 +116,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sets the target of the movement and triggers movement
+    /// </summary>
     private void Move()
     {
         RaycastHit hit;

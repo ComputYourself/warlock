@@ -9,8 +9,8 @@
 public class CursorFollower : MonoBehaviour
 {
     RaycastHit hit;
-    [SerializeField] private LayerMask mask;
-    [SerializeField] private Transform player;
+    [SerializeField] private LayerMask mask = 0;
+    [SerializeField] private Transform player = null;
     public CursorMode mode;
 
     private void Start()
@@ -40,17 +40,15 @@ public class CursorFollower : MonoBehaviour
                 }
                 break;
         }
-
     }
-    
+
     /// <summary>
     /// Callback to draw gizmos that are pickable and always drawn.
     /// </summary>
     void OnDrawGizmos()
     {
-        
-                    Gizmos.color = Color.red;
-                    Gizmos.DrawSphere((new Vector3(hit.point.x, -1.5f, hit.point.z).normalized + player.position), 0.1f);
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere((new Vector3(hit.point.x, -1.5f, hit.point.z).normalized + player.position), 0.1f);
     }
 }
 

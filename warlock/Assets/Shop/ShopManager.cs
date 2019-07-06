@@ -7,23 +7,23 @@ public class ShopManager : MonoBehaviour
 
     private PlayerController player;
 
+#pragma warning disable CS0649,IDE0044 // "Readonly", and "is never assigned to, and will always have its default value" warning
+    // I know it looks odd, but here these variables are specific needed to add an empty object that will add a SpellCast to the player, initialisation is made via Unity Editor
+    // And I want to get rid of any warning.
+    // TLDR : I know what I'm doing here
     [Header("Spells prefabs")]
-    [SerializeField] GameObject MagicBall_Cast;
-    [SerializeField] GameObject Meteor_Cast;
-    [SerializeField] GameObject Teleport_Cast;
-    [SerializeField] GameObject Stealth_Cast;
-    [SerializeField] GameObject Shotgun_Cast;
+    [SerializeField] private GameObject Meteor_Cast;
+    [SerializeField] private GameObject MagicBall_Cast;
+    [SerializeField] private GameObject Teleport_Cast;
+    [SerializeField] private GameObject Stealth_Cast;
+    [SerializeField] private GameObject Laser_Cast;
+    [SerializeField] private GameObject Shotgun_Cast;
+#pragma warning restore CS0649,IDE0044
 
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<PlayerController>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
     
     public void BuyMagicBall()
@@ -44,6 +44,11 @@ public class ShopManager : MonoBehaviour
     public void BuyStealth()
     {
         player.AddSpell(Stealth_Cast);
+    }
+
+    public void BuyLaser()
+    {
+        player.AddSpell(Laser_Cast);
     }
 
     public void BuyShotgun()
