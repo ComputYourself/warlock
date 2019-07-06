@@ -37,30 +37,36 @@ public abstract class SpellCast : MonoBehaviour
             timeToCast -= Time.deltaTime;
         }
 
-
-        // TODO : gérer smartcast
+        // TODO : gérer smartcasts
         if(isCursorActive && Input.GetMouseButtonDown(0))
         {
-            Cast();
+            GameObject obj = Throw();
+            timeToCast = cooldown;
+            //return obj;
         }
     }
+
+    /*
+     * appui sur le bouton : affichage du curseur
+     * selon la type de cast, relacher le bouton ou click ou autre : lance le sort
+     * 
+     * 
+     * 
+     * */
     
 
-    public GameObject Cast()
+    public void Cast()
     {
-
         // TODO ne pas afficher le curseur si pas le cooldown
         // TODO gérer si le spell se lance pas
         // TODO gérer smartcast sans affichage de portée
         if (timeToCast <= 0)
         {
-            GameObject obj = Throw();
-            timeToCast = cooldown;
-            return obj;
+            Cursor();
         }
         else
         {
-            return null;
+            return ;
         }
     }
 
@@ -77,5 +83,5 @@ public abstract class SpellCast : MonoBehaviour
     /// Show useful spell indicator on the cursor of the player
     /// Should be personnalised for each spell
     /// </summary>
-    public abstract void Cursor();
+    protected abstract void Cursor();
 }

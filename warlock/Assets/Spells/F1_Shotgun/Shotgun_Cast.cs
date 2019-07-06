@@ -18,7 +18,7 @@ public class Shotgun_Cast : SpellCast
     }
 
 
-    public override void Cursor()
+    protected override void Cursor()
     {
         Projector proj = cursor.GetComponent<Projector>();
         if (!isCursorActive)

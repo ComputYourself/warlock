@@ -25,7 +25,7 @@ public class Teleport_Cast : SpellCast
     }
 
 
-    public override void Cursor()
+    protected override void Cursor()
     {
         if (!isCursorActive)
         {

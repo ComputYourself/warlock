@@ -6,7 +6,7 @@ public class Stealth_Cast : SpellCast
 {
     public float duration;
 
-    public override void Cursor()
+    protected override void Cursor()
     {
         Throw();
     }

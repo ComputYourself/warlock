@@ -23,27 +23,27 @@ public class PlayerController : MonoBehaviour
         if (spells.Count > 0 && Input.GetKeyDown(KeyCode.A))
         {
             UncastAllSpells();
-            spells[0].Cursor();
+            spells[0].Cast();
         }
         if (spells.Count > 1 && Input.GetKeyDown(KeyCode.Z))
         {
             UncastAllSpells();
-            spells[1].Cursor();
+            spells[1].Cast();
         }
         if (spells.Count > 2 && Input.GetKeyDown(KeyCode.E))
         {
             UncastAllSpells();
-            spells[2].Cursor();
+            spells[2].Cast();
         }
         if (spells.Count > 3 && Input.GetKeyDown(KeyCode.R))
         {
             UncastAllSpells();
-            spells[3].Cursor();
+            spells[3].Cast();
         }
         if (spells.Count > 4 && Input.GetKeyDown(KeyCode.T))
         {
             UncastAllSpells();
-            spells[4].Cursor();
+            spells[4].Cast();
         }
 
         if(Input.GetMouseButtonDown(1))
