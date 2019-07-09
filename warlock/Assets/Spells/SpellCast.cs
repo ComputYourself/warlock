@@ -49,7 +49,7 @@ public abstract class SpellCast : MonoBehaviour
 
     /*
      * appui sur le bouton : affichage du curseur
-     * selon la type de cast, relacher le bouton ou click ou autre : lance le sort
+     * selon le type de cast, relacher le bouton ou click ou autre : lance le sort
      * 
      * 
      * 
@@ -67,6 +67,11 @@ public abstract class SpellCast : MonoBehaviour
         {
             return ;
         }
+    }
+
+    public virtual void Cancel() {
+        isCursorActive = false;
+        cursor.GetComponent<Projector>().enabled = false;
     }
 
 
