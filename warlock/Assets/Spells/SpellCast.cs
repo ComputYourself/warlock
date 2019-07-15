@@ -17,7 +17,7 @@ public abstract class SpellCast : MonoBehaviour
 
 
     // Start is called before the first frame update
-    protected void Start()
+    virtual protected void Start()
     {
         timeToCast = 0;
         cursor = GameObject.Find("CursorFollower");
@@ -30,7 +30,7 @@ public abstract class SpellCast : MonoBehaviour
     }
 
     // Update is called once per frame
-    protected void Update()
+    virtual protected void Update()
     {
         if (timeToCast > 0)
         {

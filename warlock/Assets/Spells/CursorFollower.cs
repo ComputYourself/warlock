@@ -36,7 +36,9 @@ public class CursorFollower : MonoBehaviour
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
                 {
                     this.transform.position = player.position + new Vector3(0, 10, 0);
-                    this.transform.LookAt((new Vector3(hit.point.x, -1.5f, hit.point.z) - player.position).normalized + player.position);
+                    Vector2 temp = new Vector2(hit.point.x - player.position.x, hit.point.z - player.position.z);
+                    temp.Normalize();
+                    this.transform.LookAt(new Vector3(temp.x, -1.5f, temp.y) + player.position);
                 }
                 break;
         }
@@ -48,7 +50,7 @@ public class CursorFollower : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere((new Vector3(hit.point.x, -1.5f, hit.point.z).normalized + player.position), 0.1f);
+        //Gizmos.DrawSphere((new Vector3(temp.x, -1.5f, temp.y) + player.position), 0.1f);
     }
 }
 

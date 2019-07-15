@@ -6,11 +6,15 @@ public abstract class SpellCast_Channel : SpellCast
 {
 
     public GameObject spellInstance;
+    public bool isSpellChanneling;
+
+    override protected void Start() {
+        base.Start();
+        isSpellChanneling = false;
+    }
 
     override public void Cancel() {
         base.Cancel();
-        isCursorActive = false;
-        cursor.GetComponent<Projector>().enabled = false;
         if(spellInstance != null) Destroy(spellInstance);
     }
 }

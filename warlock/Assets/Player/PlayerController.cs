@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
     {
         foreach(SpellCast cast in spells)
         {
-            cast.isCursorActive = false;
+            cast.Cancel();
         }
     }
 
