@@ -12,7 +12,7 @@ public class Laser_Cast : SpellCast_Channel {
         isCursorActive = false;
         cursor.GetComponent<CursorFollower> ().mode = CursorMode.followMouse;
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+        Ray ray = cam.ScreenPointToRay (Input.mousePosition);
         if (Physics.Raycast (ray, out hit)) {
             this.transform.LookAt (new Vector3 (hit.point.x, this.transform.position.y, hit.point.z));
         }
@@ -41,7 +41,7 @@ public class Laser_Cast : SpellCast_Channel {
         base.Update();
         if (isSpellChanneling) {
             RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+            Ray ray = cam.ScreenPointToRay (Input.mousePosition);
             if (Physics.Raycast (ray, out hit)) {
                 this.transform.LookAt (new Vector3 (hit.point.x, this.transform.position.y, hit.point.z));
             }

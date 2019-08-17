@@ -12,17 +12,18 @@ public class CursorFollower : MonoBehaviour
     [SerializeField] private LayerMask mask = 0;
     [SerializeField] private Transform player = null;
     public CursorMode mode;
+    private Camera cam;
 
     private void Start()
     {
+        cam = transform.parent.GetComponentInChildren<Camera>();
         mode = CursorMode.pointTo;
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         switch (mode)
         {
             case CursorMode.followMouse:

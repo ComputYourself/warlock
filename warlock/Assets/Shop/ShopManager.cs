@@ -23,7 +23,7 @@ public class ShopManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<PlayerController>();
+        player = transform.parent.GetComponentInChildren<PlayerController>();
     }
     
     public void BuyMagicBall()

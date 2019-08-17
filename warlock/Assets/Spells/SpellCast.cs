@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public abstract class SpellCast : MonoBehaviour
 {
     [SerializeField] private float cooldown = 1.0f;
+    protected Camera cam;
     private float timeToCast;
     public Sprite icon;
     public Material cursorMaterial;
@@ -19,12 +20,17 @@ public abstract class SpellCast : MonoBehaviour
     // Start is called before the first frame update
     virtual protected void Start()
     {
-        timeToCast = 0;
-        cursor = GameObject.Find("CursorFollower");
+        Init();
     }
 
     protected void OnEnable()
     {
+        Init();
+    }
+
+    virtual protected void Init()
+    {
+        cam = transform.parent.GetComponentInChildren<Camera>();
         timeToCast = 0;
         cursor = GameObject.Find("CursorFollower");
     }

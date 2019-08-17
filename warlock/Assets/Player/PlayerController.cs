@@ -15,7 +15,16 @@ public class PlayerController : MonoBehaviour
     public bool canMove = true;
     private bool isMoving = false;
 
+    protected Camera cam;
+
+    // Constants
     public const float MOUVEMENT_OFFSET = 0.1f;
+
+
+    private void Start()
+    {
+        cam = transform.parent.GetComponentInChildren<Camera>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -122,7 +131,7 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
         {
             this.direction = new Vector2(hit.point.x, hit.point.z);
