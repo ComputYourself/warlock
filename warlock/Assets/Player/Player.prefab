@@ -1206,6 +1206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05aba4036fedcb348bdd45d16bef17d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   Meteor_Cast: {fileID: 8320012319279604290, guid: 344a63b8caedc24438e3707d502551c5,
     type: 3}
   MagicBall_Cast: {fileID: 5427112981969236685, guid: 17dbf0cc9d8364846b64fcaed9367df2,
@@ -1486,6 +1487,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4284719457482834934}
   - component: {fileID: 5846218905306782548}
+  - component: {fileID: 2730170002512761869}
+  - component: {fileID: 1076670387615610685}
+  - component: {fileID: 2381995333221507384}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1545,6 +1549,67 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &2730170002512761869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4077850223046253926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &1076670387615610685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4077850223046253926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94f862db27ef70846a9626907c20103f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentsToDisable:
+  - {fileID: 6682655304654371527}
+  gameobjectsToDisable:
+  - {fileID: 356293586}
+  - {fileID: 1896016598}
+  - {fileID: 6682655304992983271}
+  - {fileID: 4316385294156297112}
+--- !u!114 &2381995333221507384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4077850223046253926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1267208747, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Target: {fileID: 6682655304654371547}
+  m_ChildIndex: 0
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_MovementThreshold: 0.001
+  m_InterpolateRotation: 0.5
+  m_InterpolateMovement: 0.5
 --- !u!1 &4316385294156297112
 GameObject:
   m_ObjectHideFlags: 0

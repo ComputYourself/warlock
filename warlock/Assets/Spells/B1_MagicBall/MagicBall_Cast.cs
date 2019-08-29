@@ -11,7 +11,7 @@ public class MagicBall_Cast : SpellCast
         isCursorActive = false;
 
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
         {
             this.transform.LookAt(new Vector3(hit.point.x, this.transform.position.y, hit.point.z));

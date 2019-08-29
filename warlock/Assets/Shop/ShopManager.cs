@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShopManager : MonoBehaviour
 {
 
-    private PlayerController player;
+    [SerializeField] private PlayerController player;
 
 #pragma warning disable CS0649,IDE0044 // "Readonly", and "is never assigned to, and will always have its default value" warning
     // I know it looks odd, but here these variables are specific needed to add an empty object that will add a SpellCast to the player, initialisation is made via Unity Editor
@@ -25,7 +25,7 @@ public class ShopManager : MonoBehaviour
     {
         player = transform.parent.GetComponentInChildren<PlayerController>();
     }
-    
+
     public void BuyMagicBall()
     {
         player.AddSpell(MagicBall_Cast);
