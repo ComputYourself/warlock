@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
-public abstract class SpellCast : MonoBehaviour
+public abstract class SpellCast : NetworkBehaviour
 {
     [SerializeField] private float cooldown = 1.0f;
     protected Camera cam;
